@@ -12,4 +12,11 @@
        @endforeach
    </tr>
 </table> --}}
-<a href="/register">Register</a>
+@auth
+ <span>welcome {{auth()->user()->name}}</span>  
+ <a href="/logout">Logout</a>
+
+ @else
+   <a href="/register">Register</a>  
+      <a href="/login">login</a>  
+@endauth

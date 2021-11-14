@@ -40,5 +40,6 @@ Route::post('/update/{id}', [StudentController::class, 'update']);
 // Route::post('/update/{id}', [FlightCotroller::class, 'update']);
 // Route::post('/delete/{id}', [FlightCotroller::class, 'delete']);
 
-Route::get('/register', [RegisterController::class, 'create']);
-Route::post('/register', [RegisterController::class, 'store']);
+Route::get('/register', [RegisterController::class, 'create'])->middleware('guest');
+Route::post('/register', [RegisterController::class, 'store'])->middleware('guest');
+Route::get('/logout', [RegisterController::class, 'logout']);
