@@ -13,25 +13,21 @@ class SessionController extends Controller
     }
     public function  login(Request $request)
     {
-        // $validatedData = $request->validate([
-        //     'email' => 'required',
-        //     'password' => 'required',
+        $validatedData = $request->validate([
+            'email' => 'required',
+            'password' => 'required',
 
-        // ]);
+        ]);
         $email =  $request->get('email');
-        $password =  $request->get('password');
-        if (Auth::attempt(['email' => $email, 'password' => $password])) {
-            echo "Hello";
+        $pa =  $request->get('password');
+        if (Auth::attempt(['email' => $email, 'password' => $pa])) {
+            return redirect('/dashboard');
         } else {
-            echo "Hellhiuhihiho";
+            return redirect('/login');
         }
-        // $password = $user->password =  $request->get('password');
-        // $credentials = $request->only('email', 'password');
-
-
-        // if (Auth::attempt($credentials)) {
-        //     // return view('auth.dashboard');
-        //     echo "Hello";
-        // }
+    }
+    public function admin()
+    {
+        return view('auth.dashboard');
     }
 }

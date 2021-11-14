@@ -18,18 +18,14 @@ class RegisterController extends Controller
         $validatedData = $request->validate([
             'name' => 'required',
             'email' => 'required',
-            'password' => 'required',
+            'password' => 'required|confirmed',
             'confirm-password' => 'required',
-
         ]);
         $user = new User();
-        $user->name =  $request->get('name');
+      $name =  $user->name =  $request->get('name');
         $user->email =  $request->get('email');
         $user->password = bcrypt($request->get('password'));
         $user->save();
-        // Auth::login($reg);
-        // return redirect('/');
-        // $user = User::create($validatedData);
         Auth::login($user);
         return redirect('/');
     }

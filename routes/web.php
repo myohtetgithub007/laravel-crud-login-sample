@@ -43,7 +43,21 @@ Route::post('/update/{id}', [StudentController::class, 'update']);
 
 Route::get('/register', [RegisterController::class, 'create']);
 Route::post('/register', [RegisterController::class, 'store']);
+
+
+
+
+
 Route::get('/logout', [RegisterController::class, 'logout']);
+
+
+
 Route::post('/register', [RegisterController::class, 'store']);
+
 Route::get('/login', [SessionController::class, 'create']);
+
+
 Route::post('/login', [SessionController::class, 'login']);
+
+
+Route::get('/dashboard', [SessionController::class, 'admin']);
