@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FlightCotroller;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SessionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,6 +41,9 @@ Route::post('/update/{id}', [StudentController::class, 'update']);
 // Route::post('/update/{id}', [FlightCotroller::class, 'update']);
 // Route::post('/delete/{id}', [FlightCotroller::class, 'delete']);
 
-Route::get('/register', [RegisterController::class, 'create'])->middleware('guest');
-Route::post('/register', [RegisterController::class, 'store'])->middleware('guest');
+Route::get('/register', [RegisterController::class, 'create']);
+Route::post('/register', [RegisterController::class, 'store']);
 Route::get('/logout', [RegisterController::class, 'logout']);
+Route::post('/register', [RegisterController::class, 'store']);
+Route::get('/login', [SessionController::class, 'create']);
+Route::post('/login', [SessionController::class, 'login']);

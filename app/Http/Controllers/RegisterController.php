@@ -22,14 +22,14 @@ class RegisterController extends Controller
             'confirm-password' => 'required',
 
         ]);
-        // $reg = new register();
-        // $reg->name =  $request->get('name');
-        // $reg->email =  $request->get('email');
-        // $reg->password = $request->get('password');
-        // $reg->save();
+        $user = new User();
+        $user->name =  $request->get('name');
+        $user->email =  $request->get('email');
+        $user->password = bcrypt($request->get('password'));
+        $user->save();
         // Auth::login($reg);
         // return redirect('/');
-        $user = User::create($validatedData);
+        // $user = User::create($validatedData);
         Auth::login($user);
         return redirect('/');
     }
